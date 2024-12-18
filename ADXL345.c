@@ -10,6 +10,7 @@ int ADXL345_Write(uint8_t reg, uint8_t val) {
                               HAL_MAX_DELAY) != HAL_OK) {
     return -1;
   }
+  return 0;
 }
 
 int ADXL345_Read(uint8_t reg, uint8_t *buf, uint16_t buf_size) {
@@ -22,6 +23,7 @@ int ADXL345_Read(uint8_t reg, uint8_t *buf, uint16_t buf_size) {
                        HAL_MAX_DELAY) != HAL_OK) {
     return -1;
   }
+  return 0;
 }
 
 int ADXL345_Init(void) {
@@ -32,6 +34,7 @@ int ADXL345_Init(void) {
 
   ADXL345_Write(ADXL345_REG_POWER_CTL, 0x08); // enable measurements
   ADXL345_Write(ADXL345_REG_DATA_FORMAT, 0x01); // data_format range +- 4g
+  return 0;
 }
 
 int16_t ADXL345_ReadX(void) {
