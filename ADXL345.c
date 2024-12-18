@@ -35,7 +35,7 @@ int ADXL345_Init(void) {
   }
 
   ADXL345_Write(ADXL345_REG_POWER_CTL, 0x08); // enable measurements
-  ADXL345_Write(ADXL345_REG_DATA_FORMAT, 0x01); // data_format range +- 4g
+  ADXL345_Write(ADXL345_REG_DATA_FORMAT, 0x08); // data_format range +- 4g
   return 0;
 }
 
@@ -50,8 +50,8 @@ float ADXL345_ReadX(void) {
                    HAL_MAX_DELAY);
   int16_t x;
   x = buf[1] << 8 | buf[0];
-  float xf;
-  xf = x * ADXL345_MG2G_MULTIPLIER * SENSORS_GRAVITY_STANDARD;
+  float xf = x * ADXL345_MG2G_MULTIPLIER * SENSORS_GRAVITY_STANDARD;
+  int a = 0;
   return xf;
 }
 
@@ -66,8 +66,7 @@ float ADXL345_ReadY(void) {
                    HAL_MAX_DELAY);
   int16_t y;
   y = buf[1] << 8 | buf[0];
-  float yf;
-  yf = y * ADXL345_MG2G_MULTIPLIER * SENSORS_GRAVITY_STANDARD;
+  float yf = y * ADXL345_MG2G_MULTIPLIER * SENSORS_GRAVITY_STANDARD;
   return yf;
 }
 
@@ -82,7 +81,6 @@ float ADXL345_ReadZ(void) {
                    HAL_MAX_DELAY);
   int16_t z;
   z = buf[1] << 8 | buf[0];
-  float zf;
-  zf = z * ADXL345_MG2G_MULTIPLIER * SENSORS_GRAVITY_STANDARD;
+  float zf = z * ADXL345_MG2G_MULTIPLIER * SENSORS_GRAVITY_STANDARD;
   return zf;
 }
