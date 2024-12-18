@@ -27,6 +27,8 @@ int ADXL345_Read(uint8_t reg, uint8_t *buf, uint16_t buf_size) {
 }
 
 int ADXL345_Init(void) {
+  uint8_t chipid;
+
   ADXL345_Read(ADXL345_REG_DEVID, &chipid, 1);
   if (chipid != 0xE5) {
     return -1;

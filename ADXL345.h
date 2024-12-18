@@ -42,7 +42,6 @@
 #define ADXL345_MG2G_MULTIPLIER (0.004)   ///< 4mg per lsb
 
 extern I2C_HandleTypeDef hi2c2;
-uint8_t chipid;
 
 int ADXL345_Write(uint8_t reg, uint8_t val);
 int ADXL345_Read(uint8_t reg, uint8_t *buf, uint16_t buf_size);
