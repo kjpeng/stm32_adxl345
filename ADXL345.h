@@ -41,14 +41,19 @@
 #define ADXL345_REG_FIFO_STATUS (0x39)    ///< FIFO status
 #define ADXL345_MG2G_MULTIPLIER (0.004)   ///< 4mg per lsb
 
+#define SENSORS_GRAVITY_EARTH (9.80665F) /**< Earth's gravity in m/s^2 */
+#define SENSORS_GRAVITY_MOON (1.6F)      /**< The moon's gravity in m/s^2 */
+#define SENSORS_GRAVITY_SUN (275.0F)     /**< The sun's gravity in m/s^2 */
+#define SENSORS_GRAVITY_STANDARD (SENSORS_GRAVITY_EARTH)
+
 extern I2C_HandleTypeDef hi2c2;
 
 int ADXL345_Write(uint8_t reg, uint8_t val);
 int ADXL345_Read(uint8_t reg, uint8_t *buf, uint16_t buf_size);
 
 int ADXL345_Init(void);
-int16_t ADXL345_ReadX(void);
-int16_t ADXL345_ReadY(void);
-int16_t ADXL345_ReadZ(void);
+float ADXL345_ReadX(void);
+float ADXL345_ReadY(void);
+float ADXL345_ReadZ(void);
 
 #endif

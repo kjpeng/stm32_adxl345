@@ -39,7 +39,7 @@ int ADXL345_Init(void) {
   return 0;
 }
 
-int16_t ADXL345_ReadX(void) {
+float ADXL345_ReadX(void) {
   uint8_t buf[2];
   HAL_I2C_Mem_Read(&hi2c2,
                    ADXL_ADDR << 1,
@@ -50,10 +50,12 @@ int16_t ADXL345_ReadX(void) {
                    HAL_MAX_DELAY);
   int16_t x;
   x = buf[1] << 8 | buf[0];
-  return x;
+  float xf;
+  xf = x * ADXL345_MG2G_MULTIPLIER * SENSORS_GRAVITY_STANDARD;
+  return xf;
 }
 
-int16_t ADXL345_ReadY(void) {
+float ADXL345_ReadY(void) {
   uint8_t buf[2];
   HAL_I2C_Mem_Read(&hi2c2,
                    ADXL_ADDR << 1,
@@ -64,10 +66,12 @@ int16_t ADXL345_ReadY(void) {
                    HAL_MAX_DELAY);
   int16_t y;
   y = buf[1] << 8 | buf[0];
-  return y;
+  float yf;
+  yf = y * ADXL345_MG2G_MULTIPLIER * SENSORS_GRAVITY_STANDARD;
+  return yf;
 }
 
-int16_t ADXL345_ReadZ(void) {
+float ADXL345_ReadZ(void) {
   uint8_t buf[2];
   HAL_I2C_Mem_Read(&hi2c2,
                    ADXL_ADDR << 1,
@@ -78,5 +82,7 @@ int16_t ADXL345_ReadZ(void) {
                    HAL_MAX_DELAY);
   int16_t z;
   z = buf[1] << 8 | buf[0];
-  return z;
+  float zf;
+  zf = z * ADXL345_MG2G_MULTIPLIER * SENSORS_GRAVITY_STANDARD;
+  return zf;
 }
