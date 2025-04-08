@@ -51,7 +51,6 @@ float ADXL345_ReadX(void) {
   int16_t x;
   x = buf[1] << 8 | buf[0];
   float xf = x * ADXL345_MG2G_MULTIPLIER * SENSORS_GRAVITY_STANDARD;
-  int a = 0;
   return xf;
 }
 
